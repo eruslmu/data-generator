@@ -123,10 +123,10 @@ public class Generator {
     }
 
     /**
-     * Generates id numbers between 1 and 100,000,000.
+     * Generates id numbers between 1 and 200,000,000.
      */
     private void generateId(StringBuilder builder) {
-        int min = 1, max = 100000000;
+        int min = 1, max = 200000000;
         Random random = new Random();
         int randomId = random.nextInt(max - min + 1) + min;
 
@@ -148,16 +148,16 @@ public class Generator {
 
     /**
      * Generates random timestamp in milliseconds between
-     * last year of today and today. For instance,
-     * if today is 10-May-2013, returned timestamp is
-     * a date between 10-May-2012 and 10-May-2013 in milliseconds.
+     * 1 month. For instance,
+     * if today is 10-July-2013, returned timestamp is
+     * a date between 10-June-2013 and 10-July-2013 in milliseconds.
      */
     private void generateTimestamp(StringBuilder medicalRecords) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2013, Calendar.JANUARY, 1, 0, 0, 0);// Starting from January 01, 2013 00:00:00
+        calendar.set(2013, Calendar.JUNE, 10, 0, 0, 0);// Starting from June 10, 2013 00:00:00
         long dateInMillis = calendar.getTimeInMillis();
 
-        int sixMonthInSeconds = 6 * 30 * 24 * 60 * 60;
+        int oneMonthInSeconds = 30 * 24 * 60 * 60;
         int minDateInSeconds = 0;
 
         Random randomDateInLastSixMonths = new Random();
